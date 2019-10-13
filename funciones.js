@@ -6,7 +6,7 @@ const geoCode = function(place, callback){
 
     request({ url, json: true}, function(error, response){
         if(error){
-            callback(error + 'You should check if the url is mispelled, or the Host server may be down', undefined)
+            callback(error + 'You should check if the url is mispelled, or the Host server may be down in Mapbox', undefined)
         }
         else{
             const data1 = response.body
@@ -40,11 +40,11 @@ const weather = function(lat, long, callback){
     const url= 'https://api.darksky.net/forecast/' + credentials.DARK_SKY_SECRET_KEY + '/' + lat + ',' + long + '?lang=es&units=si'
     request ({url, json: true}, function(error, response){
         if(error)
-            callback(error + ' You should check if the url is mispelled, or the Host server may be down', undefined)
+            callback(error + ' You should check if the url is mispelled, or the Host server may be down in DARKSKY API', undefined)
         else{
             const data = response.body
             if(data.error){
-                callback(data.error, undefined)
+                callback(data.error + 'Please check the format in your request in DarkSKY API', undefined)
             }
             else {
                 let probLluvia = data.daily.data[0].precipProbability
